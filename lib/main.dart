@@ -5,7 +5,6 @@ import 'package:product_dev/views/login_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(
     MaterialApp(
       home: Login(),

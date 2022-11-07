@@ -14,8 +14,8 @@ class MailOtp extends StatefulWidget {
 class _MailOtpState extends State<MailOtp> {
   Services imp = new ServiceImp();
 
-  var enteredmail2 = '';
-  var newtext2;
+  var enteredmail = '';
+  var newtext;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,7 @@ class _MailOtpState extends State<MailOtp> {
               ),
               TextFormField(
                 onChanged: (newtext2) {
-                  enteredmail2 = newtext2;
+                  enteredmail = newtext2;
                 },
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -54,9 +54,9 @@ class _MailOtpState extends State<MailOtp> {
                   onPressed: () {
                     bool emailValid = RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(enteredmail2);
+                        .hasMatch(enteredmail);
 
-                    if (enteredmail2 == '') {
+                    if (enteredmail == '') {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text("Fill the field properly"),
                         backgroundColor: Colors.blue,
@@ -64,7 +64,7 @@ class _MailOtpState extends State<MailOtp> {
                     } else {
                       if (emailValid == true) {
                         try {
-                          imp.resetPass(email: enteredmail2);
+                          imp.resetPass(email: enteredmail);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("Reset link is sent to your mail"),
                             backgroundColor: Colors.blue,
