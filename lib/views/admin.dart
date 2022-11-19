@@ -27,7 +27,7 @@ class _AdminState extends State<Admin> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "2 Biriyani\n\nTo:\n\nNo.6\nGandhi Road\nNorth Avenue\nChennai-600005",
+                    "2 Biriyani\n\nTo:\n\nNo.6\nGandhi Road\nNorth Avenue\nChennai-600005\n\nTime to be delivered: 8:00pm",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

@@ -1,7 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_sms/flutter_sms.dart';
 import 'package:product_dev/models/products.dart';
 import 'package:product_dev/services/services.dart';
 
@@ -18,22 +17,15 @@ class ServiceImp implements Services {
         .signInWithEmailAndPassword(email: mail ?? '', password: pass ?? '');
   }
 
-  void sending_SMS(String msg, List<String> list_receipents) async {
-    String send_result =
-        await sendSMS(message: msg, recipients: list_receipents)
-            .catchError((err) {
-      print(err);
-    });
-    print(send_result);
-  }
-
   @override
   void signout() async {
+    //signing out
     await FirebaseAuth.instance.signOut();
   }
 
   @override
   void signup({String? name, String? mail, String? pass}) async {
+    //signing up
     UserCredential userc;
     userc = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: mail ?? '', password: pass ?? '');
@@ -46,6 +38,7 @@ class ServiceImp implements Services {
   }
 
   Future<BuiltList<Products>> getprods() async {
+    //get the products from the database
     final QuerySnapshot<Map<String, dynamic>> _collectionRef =
         await collectionProducts.get();
     List<QueryDocumentSnapshot<Map<String, dynamic>>> snapshot =
@@ -61,6 +54,7 @@ class ServiceImp implements Services {
   }
 
   Future<void> updatecart(int id) async {
+    //add the product to cart
     final collection = FirebaseFirestore.instance.collection('products');
     var newDocumentBody = {"cart": true};
     DocumentReference docRef;
@@ -78,6 +72,7 @@ class ServiceImp implements Services {
   }
 
   void addproduct(
+      //adding the product
       {required String name,
       required String price,
       required int id,
@@ -97,6 +92,7 @@ class ServiceImp implements Services {
   }
 
   Future<void> likeprod(int id) async {
+    //liking the product
     final collection = FirebaseFirestore.instance.collection('products');
     var newDocumentBody = {"fav": true};
     DocumentReference docRef;
@@ -114,6 +110,7 @@ class ServiceImp implements Services {
   }
 
   Future<void> unlikeprod(int id) async {
+    //unlike the product
     final collection = FirebaseFirestore.instance.collection('products');
     var newDocumentBody = {"fav": false};
     DocumentReference docRef;

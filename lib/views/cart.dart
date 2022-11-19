@@ -145,6 +145,74 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ],
       ),
+      floatingActionButton: MaterialButton(
+        onPressed: () {
+          showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return StatefulBuilder(
+                    builder: (BuildContext context, StateSetter mystate) {
+                  return Bottom2();
+                });
+              });
+        },
+        color: Colors.red,
+        child: Text("Buy All"),
+      ),
+    );
+  }
+}
+
+class Bottom2 extends StatefulWidget {
+  final name;
+  final price;
+  const Bottom2({Key? key, this.name, this.price}) : super(key: key);
+
+  @override
+  State<Bottom2> createState() => _Bottom2State();
+}
+
+class _Bottom2State extends State<Bottom2> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      height: 400,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("FriedRice-Egg,Mini Meals"),
+            Text("Rs.125"),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Time to be delivered',
+                ),
+              ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text('Bought'),
+                  duration: Duration(seconds: 1),
+                ));
+                count = 1;
+                setState(() {});
+              },
+              color: Colors.red,
+              child: Text(
+                "Buy",
+                style: TextStyle(color: Colors.white),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
@@ -199,6 +267,15 @@ class _BottomState extends State<Bottom> {
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Time to be delivered',
+                ),
+              ),
             ),
             Text("Rs.${int.parse(widget.price) * count}"),
             MaterialButton(
