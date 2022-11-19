@@ -34,6 +34,14 @@ dependencies:
   firebase_auth:
   firebase_storage:
   firebase_database:
+  built_value: ^8.1.1
+  built_collection:
+  state_notifier: ^0.7.2+1
+  flutter_state_notifier: ^0.7.1
+  provider: ^6.0.3
+  flutter_launcher_icons:
+  shared_preferences: ^2.0.15
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,6 +51,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  built_value_generator:
+  build_runner:
+  url_launcher: ^6.1.6
+  flutter_native_splash:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
