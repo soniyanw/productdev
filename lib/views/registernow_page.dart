@@ -122,9 +122,13 @@ class _RegisterNowState extends State<RegisterNow> {
                 height: 54.0,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all(Colors.red),
                       shape: MaterialStateProperty.all(StadiumBorder())),
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Hey There!Welcome to Foodzy"),
+                      backgroundColor: Colors.red,
+                    ));
                     bool emailValid = RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                         .hasMatch(enteredmail1);
@@ -133,7 +137,7 @@ class _RegisterNowState extends State<RegisterNow> {
                         enteredpass2 == '') {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text("Fill all the fields properly"),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.red,
                       ));
                     } else {
                       if (emailValid == true) {
@@ -145,7 +149,7 @@ class _RegisterNowState extends State<RegisterNow> {
                                 name: "unknown");
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text("Registered Successfully"),
-                              backgroundColor: Colors.blue,
+                              backgroundColor: Colors.red,
                             ));
                             Navigator.pushAndRemoveUntil(
                                 context,
@@ -156,19 +160,19 @@ class _RegisterNowState extends State<RegisterNow> {
                             print(e);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(e.toString()),
-                              backgroundColor: Colors.blue,
+                              backgroundColor: Colors.red,
                             ));
                           }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("Passwords do not match"),
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.red,
                           ));
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Enter a valid Mail-Id"),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.red,
                         ));
                       }
                     }

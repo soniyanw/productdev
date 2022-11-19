@@ -1,6 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:product_dev/models/products.dart';
 import 'package:product_dev/models/serializers.dart';
 
 part 'appstate.g.dart';
@@ -19,4 +20,5 @@ abstract class Appstate implements Built<Appstate, AppstateBuilder> {
   }
 
   static Serializer<Appstate> get serializer => _$appstateSerializer;
+  BuiltList<Products> get products;
 }

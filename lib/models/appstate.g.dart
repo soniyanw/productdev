@@ -17,21 +17,50 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
   @override
   Iterable<Object?> serialize(Serializers serializers, Appstate object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object?>[];
+    final result = <Object?>[
+      'products',
+      serializers.serialize(object.products,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Products)])),
+    ];
+
+    return result;
   }
 
   @override
   Appstate deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new AppstateBuilder().build();
+    final result = new AppstateBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'products':
+          result.products.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Products)]))!
+              as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
 class _$Appstate extends Appstate {
+  @override
+  final BuiltList<Products> products;
+
   factory _$Appstate([void Function(AppstateBuilder)? updates]) =>
       (new AppstateBuilder()..update(updates))._build();
 
-  _$Appstate._() : super._();
+  _$Appstate._({required this.products}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(products, r'Appstate', 'products');
+  }
 
   @override
   Appstate rebuild(void Function(AppstateBuilder) updates) =>
@@ -43,24 +72,39 @@ class _$Appstate extends Appstate {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Appstate;
+    return other is Appstate && products == other.products;
   }
 
   @override
   int get hashCode {
-    return 295272312;
+    return $jf($jc(0, products.hashCode));
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper(r'Appstate').toString();
+    return (newBuiltValueToStringHelper(r'Appstate')..add('products', products))
+        .toString();
   }
 }
 
 class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   _$Appstate? _$v;
 
+  ListBuilder<Products>? _products;
+  ListBuilder<Products> get products =>
+      _$this._products ??= new ListBuilder<Products>();
+  set products(ListBuilder<Products>? products) => _$this._products = products;
+
   AppstateBuilder();
+
+  AppstateBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _products = $v.products.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
 
   @override
   void replace(Appstate other) {
@@ -77,7 +121,20 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   Appstate build() => _build();
 
   _$Appstate _build() {
-    final _$result = _$v ?? new _$Appstate._();
+    _$Appstate _$result;
+    try {
+      _$result = _$v ?? new _$Appstate._(products: products.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'products';
+        products.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'Appstate', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

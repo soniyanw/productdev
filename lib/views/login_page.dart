@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
               children: [
                 Center(
                   child: Text(
-                    'Product-Dev',
+                    'Foodzy-Dine',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -59,7 +59,6 @@ class _LoginState extends State<Login> {
                     enteredmail = newtext;
                   },
                   style: TextStyle(color: Colors.white),
-
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                       hintText: 'Enter your e-mail address',
@@ -92,7 +91,6 @@ class _LoginState extends State<Login> {
                     enteredpass = newpass;
                   },
                   style: TextStyle(color: Colors.white),
-
                   obscureText: p,
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
@@ -147,7 +145,7 @@ class _LoginState extends State<Login> {
                       'Forgot Password?',
                       style: TextStyle(
                         fontSize: 12.0,
-                        color: Colors.blue,
+                        color: Colors.red,
                       ),
                     )),
                 SizedBox(
@@ -158,7 +156,7 @@ class _LoginState extends State<Login> {
                   height: 54.0,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.blue),
+                        backgroundColor: MaterialStateProperty.all(Colors.red),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {
                       bool emailValid = RegExp(
@@ -167,15 +165,15 @@ class _LoginState extends State<Login> {
                       if (enteredmail == '' || enteredpass == '') {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Fill all the fields properly"),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.red,
                         ));
                       } else {
                         if (emailValid == true) {
                           try {
                             imp.signin(mail: enteredmail, pass: enteredpass);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Logged in Successfully"),
-                              backgroundColor: Colors.blue,
+                              content: Text("Welcome Back!"),
+                              backgroundColor: Colors.red,
                             ));
                             Navigator.pushAndRemoveUntil(
                               context,
@@ -186,13 +184,13 @@ class _LoginState extends State<Login> {
                             print(e);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(e.toString()),
-                              backgroundColor: Colors.blue,
+                              backgroundColor: Colors.red,
                             ));
                           }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("Enter a valid Mail-Id"),
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.red,
                           ));
                         }
                       }
@@ -232,7 +230,7 @@ class _LoginState extends State<Login> {
                             'Register now',
                             style: TextStyle(
                               fontSize: 12.0,
-                              color: Colors.blue,
+                              color: Colors.red,
                             ),
                           )),
                     ],

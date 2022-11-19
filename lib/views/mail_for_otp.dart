@@ -49,7 +49,7 @@ class _MailOtpState extends State<MailOtp> {
                 height: 54.0,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all(Colors.red),
                       shape: MaterialStateProperty.all(StadiumBorder())),
                   onPressed: () {
                     bool emailValid = RegExp(
@@ -59,7 +59,7 @@ class _MailOtpState extends State<MailOtp> {
                     if (enteredmail == '') {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text("Fill the field properly"),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.red,
                       ));
                     } else {
                       if (emailValid == true) {
@@ -67,7 +67,7 @@ class _MailOtpState extends State<MailOtp> {
                           imp.resetPass(email: enteredmail);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("Reset link is sent to your mail"),
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.red,
                           ));
                           Navigator.pushReplacement(
                             context,
@@ -78,13 +78,13 @@ class _MailOtpState extends State<MailOtp> {
                           print(e);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(e.toString()),
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.red,
                           ));
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Enter a valid Mail-Id"),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.red,
                         ));
                       }
                     }
