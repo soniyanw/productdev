@@ -331,9 +331,17 @@ class _LoggedState extends State<Logged> {
           ),
         ],
       ),
-floatingActionButton: FloatingActionButton(
-  onPressed: (){},
-  child: Icon(Icons.),
-),    );
+      floatingActionButton: MaterialButton(
+        color: Colors.red,
+        onPressed: () {
+          launchURLtoWeb(
+              'https://www.google.com/maps/@13.0094732,79.9934213,15z/data=!3m1!4b1!4m5!7m4!1m2!1s104999126809884516536!2sChZhc0ppWkdHZ2ZqejJZcnhCOXpwM3RnEggHBe3NSdWbPQ%3D%3D!2e2?hl=en');
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Track order"),
+        ),
+      ),
+    );
   }
 }

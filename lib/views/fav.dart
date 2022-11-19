@@ -72,12 +72,6 @@ class _FavScreenState extends State<FavScreen> {
                                         CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Image(
-                                        height: 100,
-                                        width: 100,
-                                        image: NetworkImage(
-                                            products[index].path.toString()),
-                                      ),
                                       SizedBox(
                                         width: 10,
                                       ),

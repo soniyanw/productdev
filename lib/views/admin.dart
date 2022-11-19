@@ -21,12 +21,25 @@ class _AdminState extends State<Admin> {
           padding: const EdgeInsets.all(8.0),
           child: Card(
             color: Colors.red,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "2 Biriyani\n\nTo:\n\nNo.6\nGandhi Road\nNorth Avenue\nChennai-600005",
-                style: TextStyle(color: Colors.white),
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "2 Biriyani\n\nTo:\n\nNo.6\nGandhi Road\nNorth Avenue\nChennai-600005",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: MaterialButton(
+                    onPressed: () {},
+                    color: Colors.white,
+                    child: Text("Ok"),
+                  ),
+                )
+              ],
             ),
           ),
         ),

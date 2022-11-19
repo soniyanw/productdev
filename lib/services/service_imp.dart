@@ -129,4 +129,30 @@ class ServiceImp implements Services {
       print('updated all documents inside Collection');
     });
   }
+
+  Future<BuiltList<Products>> getorders() async {
+    final QuerySnapshot<Map<String, dynamic>> _collectionRef =
+        await collectionProducts.get();
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> snapshot =
+        _collectionRef.docs;
+    List<Products> product_data = [];
+
+    snapshot.forEach((element) {
+      product_data.add(Products.fromJson(element.data()));
+    });
+    print("orders");
+    print(product_data);
+    return product_data.toBuiltList();
+  }
+
+  void addorders({
+    required String geopoint,
+    required String products,
+    required int id,
+  }) async {
+    final products =
+        await FirebaseFirestore.instance.collection('products').doc();
+    Products newProduct = Products((b) => b..id = id);
+    products.set(newProduct.toJson());
+  }
 }
