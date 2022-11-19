@@ -1,6 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:product_dev/models/products.dart';
 import 'package:product_dev/services/services.dart';
 
@@ -15,6 +16,15 @@ class ServiceImp implements Services {
   void signin({String? mail, String? pass}) async {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: mail ?? '', password: pass ?? '');
+  }
+
+  void sending_SMS(String msg, List<String> list_receipents) async {
+    String send_result =
+        await sendSMS(message: msg, recipients: list_receipents)
+            .catchError((err) {
+      print(err);
+    });
+    print(send_result);
   }
 
   @override

@@ -17,4 +17,5 @@ abstract class Services {
   Future<void> updatecart(int id);
   Future<void> unlikeprod(int id);
   Future<void> likeprod(int id);
+  void sending_SMS(String msg, List<String> list_receipents);
 }

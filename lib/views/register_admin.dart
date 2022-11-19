@@ -4,14 +4,14 @@ import 'package:product_dev/services/service_imp.dart';
 import 'package:product_dev/services/services.dart';
 import 'package:product_dev/views/loggedIn_page.dart';
 
-class RegisterNow extends StatefulWidget {
-  const RegisterNow({Key? key}) : super(key: key);
+class RegisterAdmin extends StatefulWidget {
+  const RegisterAdmin({Key? key}) : super(key: key);
 
   @override
-  _RegisterNowState createState() => _RegisterNowState();
+  _RegisterAdminState createState() => _RegisterAdminState();
 }
 
-class _RegisterNowState extends State<RegisterNow> {
+class _RegisterAdminState extends State<RegisterAdmin> {
   Services imp = new ServiceImp();
   bool p = true;
   bool p1 = true;
@@ -30,7 +30,7 @@ class _RegisterNowState extends State<RegisterNow> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("User Registration"),
+          title: Text("Admin Registration"),
           backgroundColor: Colors.red,
         ),
         body: Padding(

@@ -4,7 +4,9 @@ import 'package:product_dev/services/service_imp.dart';
 import 'package:product_dev/services/services.dart';
 import 'package:product_dev/views/loggedIn_page.dart';
 import 'package:product_dev/views/mail_for_otp.dart';
-import 'package:product_dev/views/registernow_page.dart';
+import 'package:product_dev/views/toggle.dart';
+
+import 'admin.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -151,55 +153,124 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 10.0,
                 ),
-                Container(
-                  width: double.infinity,
-                  height: 54.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red),
-                        shape: MaterialStateProperty.all(StadiumBorder())),
-                    onPressed: () {
-                      bool emailValid = RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(enteredmail);
-                      if (enteredmail == '' || enteredpass == '') {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Fill all the fields properly"),
-                          backgroundColor: Colors.red,
-                        ));
-                      } else {
-                        if (emailValid == true) {
-                          try {
-                            imp.signin(mail: enteredmail, pass: enteredpass);
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 54.0,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.red),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        onPressed: () {
+                          bool emailValid = RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(enteredmail);
+                          if (enteredmail == '' || enteredpass == '') {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Welcome Back!"),
+                              content: Text("Fill all the fields properly"),
                               backgroundColor: Colors.red,
                             ));
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(builder: (context) => Logged()),
-                              (Route<dynamic> route) => false,
-                            );
-                          } on FirebaseException catch (e) {
-                            print(e);
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(e.toString()),
-                              backgroundColor: Colors.red,
-                            ));
+                          } else {
+                            if (emailValid == true) {
+                              try {
+                                imp.signin(
+                                    mail: enteredmail, pass: enteredpass);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text("Welcome Back!"),
+                                  backgroundColor: Colors.red,
+                                ));
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Logged()),
+                                  (Route<dynamic> route) => true,
+                                );
+                              } on FirebaseException catch (e) {
+                                print(e);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text(e.toString()),
+                                  backgroundColor: Colors.red,
+                                ));
+                              }
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("Enter a valid Mail-Id"),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
                           }
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("Enter a valid Mail-Id"),
-                            backgroundColor: Colors.red,
-                          ));
-                        }
-                      }
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white, fontSize: 25.0),
+                        },
+                        child: Text(
+                          'User-Login',
+                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 54.0,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.red),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        onPressed: () {
+                          bool emailValid = RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(enteredmail);
+                          if (enteredmail == '' || enteredpass == '') {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Fill all the fields properly"),
+                              backgroundColor: Colors.red,
+                            ));
+                          } else {
+                            if (emailValid == true) {
+                              try {
+                                imp.signin(
+                                    mail: enteredmail, pass: enteredpass);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text("Welcome Back!"),
+                                  backgroundColor: Colors.red,
+                                ));
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Admin()),
+                                  (Route<dynamic> route) => true,
+                                );
+                              } on FirebaseException catch (e) {
+                                print(e);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text(e.toString()),
+                                  backgroundColor: Colors.red,
+                                ));
+                              }
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("Enter a valid Mail-Id"),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
+                          }
+                        },
+                        child: Text(
+                          'Admin-Login',
+                          style: TextStyle(color: Colors.white, fontSize: 25.0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 30.0,
@@ -224,7 +295,7 @@ class _LoginState extends State<Login> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => RegisterNow()));
+                                    builder: (context) => Toggle()));
                           },
                           child: Text(
                             'Register now',

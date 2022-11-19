@@ -7,6 +7,7 @@ import 'package:product_dev/view_model/changes.dart';
 import 'package:product_dev/views/cart.dart';
 import 'package:product_dev/views/fav.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/products.dart';
 
@@ -15,6 +16,15 @@ class Logged extends StatefulWidget {
 
   @override
   _LoggedState createState() => _LoggedState();
+}
+
+launchURLtoWeb(String urll) async {
+  final url = urll;
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }
 
 class _LoggedState extends State<Logged> {
@@ -321,6 +331,9 @@ class _LoggedState extends State<Logged> {
           ),
         ],
       ),
-    );
+floatingActionButton: FloatingActionButton(
+  onPressed: (){},
+  child: Icon(Icons.),
+),    );
   }
 }
