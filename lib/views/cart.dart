@@ -182,8 +182,8 @@ class _Bottom2State extends State<Bottom2> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("FriedRice-Egg,Mini Meals"),
-            Text("Rs.125"),
+            Text("Biriyani"),
+            Text("Rs.105"),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextField(

@@ -45,7 +45,8 @@ class _LoggedState extends State<Logged> {
     'Veg-Noodles',
     'Vada',
     'Meals',
-    'Biriyani'
+    'Biriyani',
+    'Uiijihfls'
   ];
   List<String> productUnit = [
     '1 pcs',
@@ -63,7 +64,8 @@ class _LoggedState extends State<Logged> {
     '1 qty',
     '2 pcs',
     '1 qty',
-    '1 plate'
+    '1 plate',
+    '4 kfkdh'
   ];
   List<int> productPrice = [
     50,
@@ -81,7 +83,8 @@ class _LoggedState extends State<Logged> {
     60,
     30,
     100,
-    105
+    105,
+    89
   ];
   List<String> productImage = [
     '',
